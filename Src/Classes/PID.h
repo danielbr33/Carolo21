@@ -1,4 +1,5 @@
 /*
+ *
  * PID.h
  *
  *  Created on: 05.03.2020
@@ -7,6 +8,7 @@
 
 #ifndef CLASSES_PID_H_
 #define CLASSES_PID_H_
+#include "main.h"
 
 class PID {
 public:
@@ -14,9 +16,9 @@ public:
 
 	virtual ~PID();
 private:
-	int kp;
-	int ki;
-	int kd;
+	uint16_t kp;
+	uint16_t ki;
+	uint16_t kd;
 };
 
 #endif /* CLASSES_PID_H_ */
