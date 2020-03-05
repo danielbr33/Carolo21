@@ -11,7 +11,12 @@
 class PID {
 public:
 	PID();
+
 	virtual ~PID();
+private:
+	int kp;
+	int ki;
+	int kd;
 };
 
 #endif /* CLASSES_PID_H_ */
