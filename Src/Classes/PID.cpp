@@ -30,7 +30,7 @@ void PID::setKd(uint16_t Kd)
 
 void PID::setKi(uint16_t Ki)
 {
-	if (Ki>100)
+	if (Ki>100) //
 		ki=100;
 	else
 		ki=Ki;
