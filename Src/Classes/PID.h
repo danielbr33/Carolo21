@@ -16,7 +16,7 @@ public:
 	void setKp(uint16_t Kp);
 	void setKd(uint16_t Kd);
 	void setKi(uint16_t Ki);
-	void setProbe(uint16_t E);
+	void setProbe(uint16_t Dt);
 	void setU(uint16_t U);
 	void readY(uint16_t Y);
 	uint16_t getOutput();
@@ -29,9 +29,12 @@ private:
 	uint16_t kd;
 	uint16_t output;
 	uint16_t dt=20;
-	uint16_t e;
+	uint16_t ep=0;
+	uint16_t en=0;
 	uint16_t y;
 	uint16_t u;
+	double sumOfIntegral=0.;
+
 
 };
 

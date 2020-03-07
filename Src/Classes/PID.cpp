@@ -36,8 +36,8 @@ void PID::setKi(uint16_t Ki)
 		ki=Ki;
 }
 
-void PID::setProbe(uint16_t E){
-	e=E;
+void PID::setProbe(uint16_t Dt){
+	dt=Dt;
 }
 
 void PID::setU(uint16_t U){
@@ -50,8 +50,9 @@ void PID::readY(uint16_t Y){
 
 void PID::pidLoop()
 {
-	e=u-y;
-	y+=e*dt;
+	en=u-y;
+	sumOfIntegral+=(((double)ep+(double)en)/2.)/(double)dt;
+	ep=en;
 }
 
 PID::PID()
