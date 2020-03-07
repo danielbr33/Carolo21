@@ -7,8 +7,10 @@
 
 #include <PID.h>
 
-uint16_t PID::getOutput()
+uint16_t PID::getOutputLoop(uint16_t setPoint, uint16_t processVariable)
 {
+	en=setPoint-processVariable;
+	PID::pidLoop();
 	return U;
 }
 
@@ -46,7 +48,6 @@ void PID::readEn(uint16_t value){
 
 void PID::pidLoop()
 {
-	//readEn(...);  //skad maja byc pobrane dane o uchybie
 	sumOfIntegral+=((ep+en)/2)*dt/1000;
 	differential=(en-ep)/dt*1000;
 	U=Kp*(en+(1/Ti)*sumOfIntegral+Td*differential);

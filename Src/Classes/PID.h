@@ -18,8 +18,8 @@ public:
 	void setTi(uint16_t ti);
 	void setProbe(uint16_t Dt);
 	void readEn(uint16_t value);
-	uint16_t getOutput();
-	void pidLoop();
+	uint16_t getOutputLoop(uint16_t setPoint, uint16_t processVariabl);
+
 	virtual ~PID();
 
 private:
@@ -32,8 +32,7 @@ private:
 	uint16_t U;
 	uint16_t sumOfIntegral=0.;
 	uint16_t differential;
-
-
+	void pidLoop();
 };
 
 
