@@ -13,27 +13,25 @@
 class PID {
 public:
 	PID();
-	void setKp(uint16_t Kp);
-	void setKd(uint16_t Kd);
-	void setKi(uint16_t Ki);
+	void setKp(uint16_t kp);
+	void setTd(uint16_t td);
+	void setTi(uint16_t ti);
 	void setProbe(uint16_t Dt);
-	void setU(uint16_t U);
-	void readY(uint16_t Y);
+	void readEn(uint16_t value);
 	uint16_t getOutput();
 	void pidLoop();
 	virtual ~PID();
 
 private:
-	uint16_t kp;
-	uint16_t ki;
-	uint16_t kd;
-	uint16_t output;
+	uint16_t Kp;
+	uint16_t Ti;
+	uint16_t Td;
 	uint16_t dt=20;
 	uint16_t ep=0;
 	uint16_t en=0;
-	uint16_t y;
-	uint16_t u;
-	double sumOfIntegral=0.;
+	uint16_t U;
+	uint16_t sumOfIntegral=0.;
+	uint16_t differential;
 
 
 };

@@ -9,10 +9,10 @@
 
 uint16_t PID::getOutput()
 {
-
+	return U;
 }
 
-void PID::setKp(uint16_t Kp)
+void PID::setKp(uint16_t kp)
 {
 	if (Kp>100)
 		kp=100;
@@ -20,38 +20,36 @@ void PID::setKp(uint16_t Kp)
 		kp=Kp;
 }
 
-void PID::setKd(uint16_t Kd)
+void PID::setTd(uint16_t td)
 {
-	if (Kd>100)
-		kd=100;
+	if (td>100)
+		Td=100;
 	else
-		kd=Kd;
+		Td=td;
 }
 
-void PID::setKi(uint16_t Ki)
+void PID::setTi(uint16_t ti)
 {
-	if (Ki>100)
-		ki=100;
+	if (ti>100)
+		Ti=100;
 	else
-		ki=Ki;
+		Ti=ti;
 }
 
 void PID::setProbe(uint16_t Dt){
 	dt=Dt;
 }
 
-void PID::setU(uint16_t U){
-	u=U;
-}
-
-void PID::readY(uint16_t Y){
-	y=Y;
+void PID::readEn(uint16_t value){
+	en=value;
 }
 
 void PID::pidLoop()
 {
-	en=u-y;
-	sumOfIntegral+=(((double)ep+(double)en)/2.)/(double)dt;
+	//readEn(...);  //skad maja byc pobrane dane o uchybie
+	sumOfIntegral+=((ep+en)/2)*dt/1000;
+	differential=(en-ep)/dt*1000;
+	U=Kp*(en+(1/Ti)*sumOfIntegral+Td*differential);
 	ep=en;
 }
 
