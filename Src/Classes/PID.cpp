@@ -30,10 +30,28 @@ void PID::setKd(uint16_t Kd)
 
 void PID::setKi(uint16_t Ki)
 {
-	if (Ki>100) //
+	if (Ki>100)
 		ki=100;
 	else
 		ki=Ki;
+}
+
+void PID::setProbe(uint16_t E){
+	e=E;
+}
+
+void PID::setU(uint16_t U){
+	u=U;
+}
+
+void PID::readY(uint16_t Y){
+	y=Y;
+}
+
+void PID::pidLoop()
+{
+	e=u-y;
+	y+=e*dt;
 }
 
 PID::PID()
