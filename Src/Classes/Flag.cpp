@@ -17,3 +17,12 @@ Flag::~Flag() {
 	// TODO Auto-generated destructor stub
 }
 
+void Flag::setValue(uint16_t value)
+{
+	this->value=value;
+}
+
+uint16_t Flag::getValue()
+{
+	return value;
+}
